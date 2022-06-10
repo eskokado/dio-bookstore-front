@@ -1,31 +1,25 @@
 import { Injectable } from "@angular/core"
 import { HttpClient, HttpHeaders } from "@angular/common/http"
 import { Book } from "./model/book";
+import { Observable } from "rxjs/internal/Observable";
 
-export const books: Book[] = [
-    { id: '1', name: 'Book1' , price: 10, quantity: 1, category: "Acao", img:"img1"},
-    { id: '2', name: 'Book2' , price: 10, quantity: 1, category: "Acao", img:"img2"},
-    { id: '3', name: 'Book3' , price: 10, quantity: 1, category: "Acao", img:"img3"},
-
-  ];
-
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 
 export class BookService
 {
-  private url = "https://loca:44382/bookstore";
 
+  apiUrl = 'https://sheet.best/api/sheets/532f547c-cce7-4a36-bf9a-d27004498596';
   httpOptions = {
-    Headers: new HttpHeaders({'content-type': 'application/json'})
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
   }
 
-  constructor(private http: HttpClient){}
+  constructor(private httpClient: HttpClient) { }
 
-  getBooks(): Book[] {
-    return books;
+  getBooks():Observable<Book[]> {
+    return this.httpClient.get<Book[]>(this.apiUrl);
   }
-
-  // getBooks(){
-  //   return this.http.get(this.url)
-  // }
 }

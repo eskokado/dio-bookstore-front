@@ -1,8 +1,8 @@
 <div class="container">
-  <app-nav></app-nav>
+  <app-nav (open)="openCarrinho($event)"></app-nav>
   <div class="row">
     <div class="col">
-      <app-bookstore-app></app-bookstore-app>
+      <app-bookstore-app [isOpenCarrinho]="isOpenCarrinho"></app-bookstore-app>
     </div>
   </div>
   <div class="row">

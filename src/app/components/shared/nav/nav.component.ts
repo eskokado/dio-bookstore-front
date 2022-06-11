@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-nav',
@@ -8,8 +8,14 @@ import { Component, OnInit } from '@angular/core';
 export class NavComponent implements OnInit {
 
   constructor() { }
+  @Output() open = new EventEmitter;
 
   ngOnInit(): void {
+  }
+
+  openCarrinho(): void {
+    console.log('clicou nav openCarrinho');
+    this.open.emit(true);
   }
 
 }

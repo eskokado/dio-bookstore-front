@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { BookService } from './product-list.component.service';
 
 @Component({
@@ -8,6 +8,7 @@ import { BookService } from './product-list.component.service';
 })
 export class ProductListComponent implements OnInit {
 
+  @Input()
   livros: any;
 
   constructor(private bookService: BookService) { }
@@ -18,4 +19,5 @@ export class ProductListComponent implements OnInit {
       console.log(this.livros);
     });
   }
+
 }

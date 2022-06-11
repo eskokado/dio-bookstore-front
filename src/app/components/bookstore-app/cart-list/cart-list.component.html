@@ -1,0 +1,54 @@
+<div class="row mb-3">
+  <div class="col-md-3 ml-3">
+    <span>Seu Carrinho</span>
+  </div>
+  <div class="col-md-9">
+    <button class="btn btn-outline-danger btn-sm" (click)="clearCart()">Esvaziar</button>
+    <button class="btn btn-outline-success btn-sm" (click)="closeCart()">Fechar</button>
+  </div>
+</div>
+
+<mat-table class="cart-list-table mat-elevation-z8" [dataSource]="dataSource">
+
+  <th scope="row">
+
+    <ng-container matColumnDef="img">
+        <div *matHeaderCellDef>image</div>
+        <img *matCellDef="let item" src="{{'assets/images/' + item.img + '.jpg'}}" class="img-cart rounded-circle"/>
+    </ng-container>
+
+    <ng-container matColumnDef="id">
+        <div *matHeaderCellDef class="id-cell">#</div>
+        <div class="id-cell"
+                *matCellDef="let item">{{item.id}}</div>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+        <div *matHeaderCellDef class="name-cell">Nome</div>
+        <div class="name-cell"
+                  *matCellDef="let item">{{item.name}}</div>
+    </ng-container>
+
+    <ng-container matColumnDef="quantity">
+        <div *matHeaderCellDef class="quantity-cell">Qtde</div>
+        <div class="quantity-cell"
+                  *matCellDef="let item">{{item.quantity}}</div>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+        <div *matHeaderCellDef class="price-cell">Preço</div>
+        <div class="price-cell"
+                  *matCellDef="let item">{{ item.price | currency:"BRL"}}</div>
+    </ng-container>
+
+    <ng-container matColumnDef="total">
+        <div *matHeaderCellDef class="total-cell">Total</div>
+        <div class="total-cell"
+                  *matCellDef="let item">{{ item.quantity * item.price | currency:"BRL" }}</div>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+</mat-table>

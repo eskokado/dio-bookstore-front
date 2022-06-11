@@ -12,7 +12,14 @@ import { ProductListComponent } from './components/bookstore-app/product-list/pr
 import { ProductItemComponent } from './components/bookstore-app/product-list/product-item/product-item.component';
 import { BookService } from './components/bookstore-app/product-list/product-list.component.service';
 import { HttpClientModule } from '@angular/common/http';
-
+import { CartListComponent } from './components/bookstore-app/cart-list/cart-list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatTableModule } from '@angular/material/table';
+import { CartListService } from './components/bookstore-app/cart-list/cart-list.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,14 +29,21 @@ import { HttpClientModule } from '@angular/common/http';
     BookstoreAppComponent,
     FiltersComponent,
     ProductListComponent,
-    ProductItemComponent
+    ProductItemComponent,
+    CartListComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatListModule,
+    MatIconModule,
+    MatTableModule,
   ],
-  providers: [BookService],
+  providers: [BookService, CartListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
